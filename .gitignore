@@ -1,0 +1,21 @@
+# Data and runtime
+logs/
+
+# Python
+__pycache__/
+*.pyc
+
+# Environment
+.env
+.env.local
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Docker
+*.pid
+
+.md
+!README.md
+!data/README.md

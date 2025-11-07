@@ -1,0 +1,1 @@
+This folder works as a storage space for generated_data and processed_data
