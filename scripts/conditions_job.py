@@ -11,7 +11,8 @@ def main():
     
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     
-    input_path = os.path.join(BASE_DIR, "data", "generated_data", "fhir", "*.json")
+    # Read from processing folder to avoid race conditions
+    input_path = os.path.join(BASE_DIR, "data", "generated_data", "processing", "*.json")
     output_path = os.path.join(BASE_DIR, "data", "processed_data", "conditions")
     
     # Read all patient bundle JSON files

@@ -4,7 +4,8 @@ from pathlib import Path
 
 # Dynamically resolve the path so it works no matter where you run it
 BASE_DIR = Path(__file__).resolve().parent.parent
-DATA_DIR = BASE_DIR / "data" / "generated_data" / "fhir"
+# Use processing folder to avoid race conditions with incoming data
+DATA_DIR = BASE_DIR / "data" / "generated_data" / "processing"
 
 def is_patient_bundle(file_path):
     """Check if the file is a FHIR Patient bundle."""

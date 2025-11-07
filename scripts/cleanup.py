@@ -4,7 +4,8 @@ from pathlib import Path
 
 # Dynamically resolve the raw data folder path
 BASE_DIR = Path(__file__).resolve().parent.parent
-RAW_DATA_PATH = BASE_DIR / "data" / "generated_data" / "fhir"
+# Clean up processing folder after pipeline completes
+RAW_DATA_PATH = BASE_DIR / "data" / "generated_data" / "processing"
 
 def cleanup_raw_folder(path: Path):
     """Delete all files and folders inside the raw data folder."""

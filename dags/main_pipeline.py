@@ -41,24 +41,40 @@ dag = DAG(
 )
 
 def check_for_files():
-    """Check if there are any JSON files in the generated_data/fhir folder.
+    """Check if there are any JSON files and move them to processing folder.
     
+    This prevents race conditions where new files arrive during processing.
     Returns False to skip pipeline if no files, True to continue processing.
     """
+    import shutil
+    
     base_dir = Path('/opt/airflow')
     fhir_dir = base_dir / 'data' / 'generated_data' / 'fhir'
+    processing_dir = base_dir / 'data' / 'generated_data' / 'processing'
     
-    if not fhir_dir.exists():
-        fhir_dir.mkdir(parents=True, exist_ok=True)
-        print(f"⚠️ Directory created but no files found in {fhir_dir}")
-        return False
+    # Create directories if they don't exist
+    fhir_dir.mkdir(parents=True, exist_ok=True)
+    processing_dir.mkdir(parents=True, exist_ok=True)
     
+    # Check for files in the incoming folder
     json_files = list(fhir_dir.glob('*.json'))
     if not json_files:
         print(f"⚠️ No JSON files found in {fhir_dir} - skipping pipeline")
         return False
     
-    print(f"✅ Found {len(json_files)} JSON files to process")
+    # Move files to processing folder atomically
+    print(f"📦 Moving {len(json_files)} files to processing folder...")
+    for file in json_files:
+        try:
+            dest = processing_dir / file.name
+            shutil.move(str(file), str(dest))
+            print(f"  ✓ Moved: {file.name}")
+        except Exception as e:
+            print(f"  ✗ Failed to move {file.name}: {e}")
+    
+    # Verify files were moved
+    processing_files = list(processing_dir.glob('*.json'))
+    print(f"✅ Ready to process {len(processing_files)} files from processing folder")
     return True
 
 # Check for new files - skips downstream tasks if no files found
