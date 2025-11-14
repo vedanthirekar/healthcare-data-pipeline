@@ -1,1 +1,1 @@
-This folder works as a storage space for generated_data and processed_data
+This folder works as a storage space for generated_data and processed_data. The simulated source stores the data in generated_data. After processing the CSVs get stored in 3 folders patients, conditions and encounters inside processed_data
