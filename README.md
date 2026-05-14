@@ -9,7 +9,7 @@
 
 ---
 
-## 📋 Table of Contents
+## Table of Contents
 
 - [Overview](#overview)
 - [Problem Statement](#problem-statement)
@@ -22,13 +22,13 @@
 
 ---
 
-## 🎯 Overview
+## Overview
 
 This project implements a **automated data pipeline** that transforms HL7 FHIR (Fast Healthcare Interoperability Resources) formatted healthcare data into structured tabular formats suitable for analytics and visualization. The pipeline leverages **Apache Airflow** for orchestration, **PySpark** for distributed data processing.
 
 ---
 
-## 🔍 Problem Statement
+## Problem Statement
 
 Healthcare data interoperability remains a critical challenge in modern healthcare systems. The HL7 FHIR standard, while providing a robust framework for healthcare data exchange, presents significant barriers for data analysts and business intelligence teams due to its **complex nested JSON structure**.
 
@@ -50,13 +50,13 @@ This project builds an **end-to-end automated ETL pipeline** that:
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ![Healthcare Data Pipeline Architecture](healthcare-workflow-diagram.jpg)
 
 ---
 
-## ✨ Key Features
+## Key Features
 
 ### Pipeline Orchestration
 - **Apache Airflow DAG** with 6 sequential tasks
@@ -75,7 +75,7 @@ This project builds an **end-to-end automated ETL pipeline** that:
 ---
 
 
-## 🚀 Setup Instructions
+## Setup Instructions
 
 ### Prerequisites
 
@@ -163,7 +163,7 @@ Place the JSON files in `data/generated_data/fhir/` folder.
 
 ---
 
-## 📊 Usage
+## Usage
 
 ### Monitoring the Pipeline
 
@@ -198,7 +198,7 @@ docker compose down
 
 ---
 
-## 📚 Additional Resources
+## Additional Resources
 
 - [Project Report (PDF)](Healthcare%20Data%20Pipeline%20Project%20Report.pdf) - Detailed academic report
 - [Apache Airflow Documentation](https://airflow.apache.org/docs/)
